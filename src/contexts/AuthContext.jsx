@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../config/axios';
 
 const AuthContext = createContext();
 
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
 
     // 2. Fallback to dummyjson API
     try {
-      const response = await axios.post('https://dummyjson.com/auth/login', {
+      const response = await api.post('/auth/login', {
         username,
         password,
         expiresInMins: 60,
