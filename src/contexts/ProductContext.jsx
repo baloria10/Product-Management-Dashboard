@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../config/axios';
 import { useAuth } from './AuthContext';
 
 const ProductContext = createContext();
@@ -26,7 +26,7 @@ export const ProductProvider = ({ children }) => {
           setProducts(JSON.parse(storedProducts));
         } else {
           // Fetch from DummyJSON initially
-          const response = await axios.get('https://dummyjson.com/products?limit=100');
+          const response = await api.get('/products?limit=100');
           const data = response.data.products.map(p => ({
             ...p,
             isActive: p.stock > 0 // derive status
@@ -36,7 +36,7 @@ export const ProductProvider = ({ children }) => {
         }
 
         // Fetch categories
-        const catRes = await axios.get('https://dummyjson.com/products/categories');
+        const catRes = await api.get('/products/categories');
         setCategories(catRes.data.map(c => typeof c === 'string' ? c : c.slug));
         
       } catch (error) {
@@ -63,7 +63,7 @@ export const ProductProvider = ({ children }) => {
   const addProduct = async (newProduct) => {
     try {
       // Call dummy api
-      const response = await axios.post('https://dummyjson.com/products/add', newProduct);
+      const response = await api.post('/products/add', newProduct);
       const addedProduct = {
         ...response.data,
         ...newProduct,
@@ -88,7 +88,7 @@ export const ProductProvider = ({ children }) => {
   const editProduct = async (id, updatedData) => {
     try {
       try {
-         await axios.put(`https://dummyjson.com/products/${id}`, updatedData);
+         await api.put(`/products/${id}`, updatedData);
       } catch (e) {
          console.warn("DummyJSON API edit failed, continuing locally.");
       }
@@ -118,7 +118,7 @@ export const ProductProvider = ({ children }) => {
   const deleteProduct = async (id) => {
     try {
        try {
-         await axios.delete(`https://dummyjson.com/products/${id}`);
+         await api.delete(`/products/${id}`);
        } catch (e) {
          console.warn("DummyJSON API delete failed, continuing locally.");
        }
