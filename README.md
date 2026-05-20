@@ -2,7 +2,7 @@
 A comprehensive frontend web application for managing products, built with modern web technologies. This dashboard provides a seamless user experience for authenticating users and managing product inventories.
 ## Features
 - **User Authentication**: Secure Login and Signup functionality with protected routes.
-- **Product Management**: View, add, edit, and delete products from a centralized dashboard.
+- **Product Management**: View, add, edit, and delete products from a Admin dashboard.
 - **Interactive UI**: Custom components including Modals, Select dropdowns, and Product Cards.
 - **Responsive Design**: Built with Tailwind CSS for a seamless experience across all devices.
 ## Tech Stack
