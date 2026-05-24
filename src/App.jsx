@@ -15,7 +15,7 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            
+
             {/* Admin Routes */}
             <Route element={<ProtectedRoute allowedRole="admin" />}>
               <Route path="/admin" element={<Dashboard />} />
@@ -24,6 +24,11 @@ function App() {
             {/* User Routes */}
             <Route element={<ProtectedRoute allowedRole="user" />}>
               <Route path="/user" element={<Dashboard />} />
+            </Route>
+
+            {/* test */}
+            <Route element={<ProtectedRoute allowedRole="admin" />}>
+              <Route path="/test" element={<Dashboard />} />
             </Route>
 
             {/* Catch all redirect */}
