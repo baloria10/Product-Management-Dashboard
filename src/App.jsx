@@ -26,11 +26,6 @@ function App() {
               <Route path="/user" element={<Dashboard />} />
             </Route>
 
-            {/* test */}
-            <Route element={<ProtectedRoute allowedRole="admin" />}>
-              <Route path="/test" element={<Dashboard />} />
-            </Route>
-
             {/* Catch all redirect */}
             <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="*" element={<Navigate to="/login" replace />} />
